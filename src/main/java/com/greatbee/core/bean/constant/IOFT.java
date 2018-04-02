@@ -12,6 +12,7 @@ public enum IOFT {
     Create("create"),
     Update("update"),
     Common("common"),
+    Unstructured("unstructured"),
     Cache("cache");
     private String type;
 

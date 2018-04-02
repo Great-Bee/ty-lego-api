@@ -18,6 +18,8 @@ public class APILego implements Identified, Describable {
     private String oiAlias;
     private Integer index;
 
+    private String uuid;
+
     //JSON Config Data,{name:value}
     private String attributes;
 
@@ -105,5 +107,13 @@ public class APILego implements Identified, Describable {
     @Override
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 }

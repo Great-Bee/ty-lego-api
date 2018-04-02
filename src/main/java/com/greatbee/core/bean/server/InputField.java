@@ -32,6 +32,8 @@ public class InputField extends SimpleIND implements IND, AliasBean, Cloneable{
     //如果FVT == output，则配置来源的APILegoID，通过当前InputField.fromApiLegoAlias = outputField.alias
     private Integer fromApiLegoId;
     private String fromApiLegoOutputFieldAlias;
+    //fromApiLegoId 换成了uuid
+    private String fromApiLegoUuid;
 
     //如果FVT == request，则request name从requestParamName中获取
     private String requestParamName;
@@ -56,6 +58,10 @@ public class InputField extends SimpleIND implements IND, AliasBean, Cloneable{
     private Integer inputFieldDescribeId;
     //输入字段模板，支持 ${request.name}   ${session.data.sex}   ${node.data2.id} （来自上面节点）
     private String fieldTpl;
+
+    //输入字段 唯一标示  apilego唯一标识
+    private String uuid;
+    private String apiLegoUuid;
 
     public String getSessionParamName() {
         return sessionParamName;
@@ -224,5 +230,29 @@ public class InputField extends SimpleIND implements IND, AliasBean, Cloneable{
 
     public void setFieldTpl(String fieldTpl) {
         this.fieldTpl = fieldTpl;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public String getApiLegoUuid() {
+        return apiLegoUuid;
+    }
+
+    public void setApiLegoUuid(String apiLegoUuid) {
+        this.apiLegoUuid = apiLegoUuid;
+    }
+
+    public String getFromApiLegoUuid() {
+        return fromApiLegoUuid;
+    }
+
+    public void setFromApiLegoUuid(String fromApiLegoUuid) {
+        this.fromApiLegoUuid = fromApiLegoUuid;
     }
 }

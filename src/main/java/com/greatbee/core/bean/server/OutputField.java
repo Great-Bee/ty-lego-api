@@ -31,6 +31,10 @@ public class OutputField extends SimpleIND implements IND, AliasBean {
 
     private Integer outputFieldDescribeId;
 
+    //输出唯一标示  和  apilego唯一标示
+    private String uuid;
+    private String apiLegoUuid;
+
     public Integer getOutputFieldDescribeId() {
         return outputFieldDescribeId;
     }
@@ -106,5 +110,22 @@ public class OutputField extends SimpleIND implements IND, AliasBean {
 
     public OutputField clone() {
         return (OutputField) super.clone();
+    }
+
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public String getApiLegoUuid() {
+        return apiLegoUuid;
+    }
+
+    public void setApiLegoUuid(String apiLegoUuid) {
+        this.apiLegoUuid = apiLegoUuid;
     }
 }

@@ -1,8 +1,10 @@
 package com.greatbee.core.bean.server;
 
 import com.greatbee.base.bean.AliasBean;
+import com.greatbee.base.bean.DataList;
 import com.greatbee.base.bean.IND;
 import com.greatbee.base.bean.ext.SimpleIND;
+import com.greatbee.base.util.CollectionUtil;
 
 import java.util.List;
 
@@ -12,7 +14,7 @@ import java.util.List;
  * Author :CarlChen
  * Date:17/7/7
  */
-public class InputField extends SimpleIND implements IND, AliasBean, Cloneable{
+public class InputField extends SimpleIND implements IND, AliasBean, Cloneable {
     private Integer apiLegoId;
     private String fieldName;
     //存储字段的值，属于业务逻辑，不存数据库
@@ -153,18 +155,31 @@ public class InputField extends SimpleIND implements IND, AliasBean, Cloneable{
      * @return
      */
     public String fieldValueToString() {
-        if (fieldValue != null && fieldValue instanceof List) {
+        boolean isList = false;
+        List list = null;
+        if (fieldValue != null) {
+            if (fieldValue instanceof List) {
+                list = (List) fieldValue;
+                isList = true;
+            } else if (fieldValue instanceof DataList) {
+                list = ((DataList) fieldValue).getList();
+                isList = true;
+            }
+        }
+        if (isList) {
             StringBuilder sb = new StringBuilder();
-            List list = (List) fieldValue;
-            for (int i = 0; i < list.size(); i++) {
-                if (i != 0) {
-                    sb.append(",");
+            if (CollectionUtil.isValid(list)) {
+                for (int i = 0; i < list.size(); i++) {
+                    if (i != 0) {
+                        sb.append(",");
+                    }
+                    sb.append(list.get(i).toString());
                 }
-                sb.append(list.get(i).toString());
             }
             return sb.toString();
+        } else {
+            return fieldValue != null ? fieldValue.toString() : null;
         }
-        return fieldValue != null ? fieldValue.toString() : null;
     }
 
     public String getFvt() {

@@ -33,7 +33,7 @@ public class APILego implements Identified, Describable {
 
         APILego apiLego = (APILego) o;
 
-        return id == apiLego.id;
+        return uuid.equals(apiLego.uuid);
 
     }
 
@@ -43,11 +43,6 @@ public class APILego implements Identified, Describable {
 
     public void setProcessControllerAlias(String processControllerAlias) {
         this.processControllerAlias = processControllerAlias;
-    }
-
-    @Override
-    public int hashCode() {
-        return id;
     }
 
     @Override

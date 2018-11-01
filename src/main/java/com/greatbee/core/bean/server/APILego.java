@@ -26,6 +26,9 @@ public class APILego implements Identified, Describable {
     //配置控制器别名
     private String processControllerAlias;
 
+    //是否被禁用 为true 该节点被禁用
+    private Boolean disabled;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -110,5 +113,13 @@ public class APILego implements Identified, Describable {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+
+    public Boolean isDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
     }
 }
